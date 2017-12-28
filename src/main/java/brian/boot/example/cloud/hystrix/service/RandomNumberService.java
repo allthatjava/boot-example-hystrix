@@ -9,7 +9,10 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 @Service
 public class RandomNumberService {
 	
-	@HystrixCommand(fallbackMethod = "getRandomNumberFallback")
+	@HystrixCommand(fallbackMethod = "getRandomNumberFallback",
+			threadPoolKey="randomNumberPool",
+			groupKey="RandomNumberService"
+			)
 	public int getRandomNumber() {
 		Random r = new Random();
 		int number = (r.nextInt() & Integer.MAX_VALUE)%10;
@@ -26,7 +29,10 @@ public class RandomNumberService {
 		return -1;
 	}
 	
-	@HystrixCommand
+	@HystrixCommand(
+			threadPoolKey="delayedRandomNumberPool",
+			groupKey="RandomNumberService"
+	)
 	public int getDelayedRandomNumber() {
 		Random r = new Random();
 		int number = r.nextInt();

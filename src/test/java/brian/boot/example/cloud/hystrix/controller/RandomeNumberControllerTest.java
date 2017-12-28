@@ -1,21 +1,26 @@
 package brian.boot.example.cloud.hystrix.controller;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class RandomeNumberControllerTest {
 	
+	TestRestTemplate testTemplate;
+	
+	@Before
+	public void setup() {
+		testTemplate = new TestRestTemplate();
+	}
+	
 	@Test
 	public void testRandomeNumber() {
 
-		TestRestTemplate testTemplate = new TestRestTemplate();
-		
 		ResponseEntity<String> response;
 		
 		StringBuilder result = new StringBuilder();
@@ -34,8 +39,6 @@ public class RandomeNumberControllerTest {
 	@Test
 	public void testDalyedRandomeNumber() {
 
-		TestRestTemplate testTemplate = new TestRestTemplate();
-		
 		ResponseEntity<String> response;
 		
 		StringBuilder result = new StringBuilder();

@@ -32,6 +32,8 @@ dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-hystrix')	// Hystrix library
 	compile('org.springframework.boot:spring-boot-starter-actuator')	// Reqiured : To stream the Hystrix report
 	
+	compile('org.springframework.cloud:spring-cloud-starter-hystrix-dashboard')	// Hystrix Dashboard
+	
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
