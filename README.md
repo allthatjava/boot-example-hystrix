@@ -37,13 +37,16 @@ Config on the Application Configuration
 ```
 @EnableHystrixDashboard
 ```
-After that, you can see the dash board by `/hystrix`. It will show you the main Hystrix welcome screen and you can enter the url what you want to see. In this case,
+After that, you can see the dash board by `/hystrix`. It will show you the main Hystrix welcome screen and you can enter the url what you want to see.
+
+![alt hystream-dashboard](docs/images/dashboard_1.png)
+
+
+In this case,
 ```
 http://localhost:8080/hystrix.stream
 ```
-then hit 'Monitor Stream' button. 
-
-![alt hystream-dashboard](docs/images/dashboard_1.png)
+Then hit 'Monitor Stream' button. 
 ![alt hystream-dashboard-monitoring](docs/images/dashboard_2.png)
 
 
