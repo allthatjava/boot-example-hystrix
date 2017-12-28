@@ -43,7 +43,7 @@ http://localhost:8080/hystrix.stream
 ```
 then hit 'Monitor Stream' button. 
 
-![alt hystream-dashboard](docs/images/dashboard-1.png)
+![alt hystream-dashboard](docs/images/dashboard_1.png)
 ![alt hystream-dashboard-monitoring](docs/images/dashboard_2.png)
 
 
