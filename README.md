@@ -19,8 +19,8 @@ This test will test two url /randomTest and /delayedRandomTest/{counter}
 ## Hystrix & Streaming report
 To use Hystrix, only one dependency is required. But, if you want to stream the data to hystrix-dashboard, actuator dependency must be there as well.
 ```
-	compile('org.springframework.cloud:spring-cloud-starter-hystrix')	// Hystrix library
-	compile('org.springframework.boot:spring-boot-starter-actuator')	// Reqiured : To stream the Hystrix report
+compile('org.springframework.cloud:spring-cloud-starter-hystrix')	// Hystrix library
+compile('org.springframework.boot:spring-boot-starter-actuator')	// Reqiured : To stream the Hystrix report
 ```
 
 When you add both dependencies, by the url `/hystrix.stream` you will see something like this.
@@ -30,7 +30,7 @@ When you add both dependencies, by the url `/hystrix.stream` you will see someth
 All you need to have it is adding dependency and add a Annotation.
 
 ```
-	compile('org.springframework.cloud:spring-cloud-starter-hystrix-dashboard')	// Hystrix Dashboard
+compile('org.springframework.cloud:spring-cloud-starter-hystrix-dashboard')	// Hystrix Dashboard
 ```
 Config on the Application Configuration
 
