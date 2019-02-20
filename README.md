@@ -53,3 +53,10 @@ Then hit 'Monitor Stream' button.
 
 
 https://github.com/Netflix/Hystrix/wiki/Configuration
+
+
+## Proxy Setup may required 
+If you are inside the network with proxy server, update the gradle.properties file accordingly.
+This is needed to download all dependencies.
+
+

@@ -19,20 +19,42 @@ public class RandomNumberController {
 	@Autowired
 	RandomNumberService service;
 
-	@RequestMapping(value="/randomTest")
-	public String getRandomNumber() {
-		return service.getRandomNumber()+"";
+	/**
+	 * Returns the number that is given if it is less than 5.
+	 * Otherwise it will return -1
+	 * @param number
+	 * @return
+	 */
+	@RequestMapping(value="/numberChecker/{number}")
+	public String getNumberChecker(@PathVariable("number") int number) {
+		return service.checkNumber(number)+"";
 	}
 	
-	@RequestMapping(value="/delayedRandomTest/{counter}")
-	public String getDelayedRandomNumber(@PathVariable("counter") int counter) {
+	/**
+	 * Returns the timeDelay that is give if it is less than 5000 (5 seconds).
+	 * 										---> Check application.yml for this setup.
+	 * Otherwise, it will return error message
+	 * 
+	 * @param timeDelay
+	 * @return
+	 */
+	@RequestMapping(value="/delayedTimeTest/{timeDelay}")
+	public String getDelayedTimeCheck(@PathVariable("timeDelay") int timeDelay) {
 		
-		return service.getDelayedRandomNumber()+"";
+		return service.getDelayedRandomNumber(timeDelay)+"";
 	}
 	
+	/**
+	 * Handles the Hystrix Time out exception.
+	 * 
+	 * @param ex
+	 * @param req
+	 * @return
+	 */
 	@ExceptionHandler({HystrixRuntimeException.class})
 	protected ResponseEntity<Object> handleConflict(HystrixRuntimeException ex, WebRequest req) {
-        String bodyOfResponse = "The request "+req.getContextPath()+" has been timed out. Sorry~";
+        String bodyOfResponse = "The request "+req.getDescription(false)+" has been timed out. Sorry~";
+        System.out.println(bodyOfResponse);
         
 		return new ResponseEntity<Object>(bodyOfResponse, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
