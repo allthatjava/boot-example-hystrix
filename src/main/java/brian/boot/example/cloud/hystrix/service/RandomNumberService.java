@@ -1,7 +1,5 @@
 package brian.boot.example.cloud.hystrix.service;
 
-import java.util.Random;
-
 import org.springframework.stereotype.Service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -9,43 +7,65 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 @Service
 public class RandomNumberService {
 	
+	/**
+	 * Returns the number that is given if it is greater or equal to 5.
+	 * If it is less than 5, it will throws the exception and FallbackMethod will be called
+	 * 
+	 * @param number
+	 * @return
+	 */
 	@HystrixCommand(fallbackMethod = "getRandomNumberFallback",
-			threadPoolKey="randomNumberPool",
-			groupKey="RandomNumberService"
-			)
-	public int getRandomNumber() {
-		Random r = new Random();
-		int number = (r.nextInt() & Integer.MAX_VALUE)%10;
+					threadPoolKey="randomNumberPool",
+					groupKey="RandomNumberService"
+					)
+	public int checkNumber(int number) {
 		
-		System.out.println("getRandomNumber got "+number);
+		System.out.println("checkNumber got "+number);
 		
-		if( number < 2)
-			throw new RuntimeException("Lower than 2 number has returned. Thrwoing RuntimeException");
+		if( number < 5)
+			throw new RuntimeException("Lower than 5 number has returned. Thrwoing RuntimeException");
+
+		System.out.println("Number is greater than 5");
 		
 		return number;
 	}
 	
-	public int getRandomNumberFallback() {
+	/**
+	 * Fallback method for checkNumber(...). If checkNumber(...) throws any exception, this method will be called.
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public int getRandomNumberFallback(int number) {
+
+		System.out.println("Something went wrong - Fallback method getRandomNumberFallback("+number+") is called");
+		
 		return -1;
 	}
 	
+	/**
+	 * Returns the given timeDelay if it is less than 500 (500 milliseconds).
+	 * Otherwise it will trigger the HystrixRuntimeException
+	 * 
+	 * @param timeDelay
+	 * @return
+	 */
 	@HystrixCommand(
-			threadPoolKey="delayedRandomNumberPool",
-			groupKey="RandomNumberService"
-	)
-	public int getDelayedRandomNumber() {
-		Random r = new Random();
-		int number = r.nextInt();
-		int delay = (r.nextInt() & Integer.MAX_VALUE)%7;
-
-		System.out.println("getDelayedRandomNumber will be delayed for "+(delay*1000));
+					threadPoolKey="delayedRandomNumberPool",
+					groupKey="RandomNumberService"
+					)
+	public int getDelayedRandomNumber(int timeDelay) {
 		
 		try {
-			Thread.sleep(delay*1000);
+			System.out.println("Delaying starts...");
+			Thread.sleep(timeDelay); // The execution will be delayed this long
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+		} finally {
+			System.out.println("Delaying ended...");
 		}
 		
-		return number;
+		return timeDelay;
 	}
 }
