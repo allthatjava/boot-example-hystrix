@@ -1,4 +1,4 @@
-package brian.boot.example.cloud.hystrix.controller;
+package brian.example.boot.cloud.hystrix.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -12,7 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.netflix.hystrix.exception.HystrixRuntimeException;
 
-import brian.boot.example.cloud.hystrix.service.RandomNumberService;
+import brian.example.boot.cloud.hystrix.service.RandomNumberService;
 
 @RestController
 public class RandomNumberController {

@@ -1,4 +1,4 @@
-package brian.boot.example.cloud.hystrix.service;
+package brian.example.boot.cloud.hystrix.service;
 
 import org.springframework.stereotype.Service;
 

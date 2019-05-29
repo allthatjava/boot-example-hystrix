@@ -1,4 +1,4 @@
-package brian.boot.example.cloud.hystrix;
+package brian.example.boot.cloud.hystrix;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

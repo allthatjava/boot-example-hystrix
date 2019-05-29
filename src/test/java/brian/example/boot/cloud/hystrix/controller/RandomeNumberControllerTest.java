@@ -1,4 +1,4 @@
-package brian.boot.example.cloud.hystrix.controller;
+package brian.example.boot.cloud.hystrix.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,4 +1,4 @@
-package brian.boot.example.cloud.hystrix;
+package brian.example.boot.cloud.hystrix;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
