@@ -17,6 +17,12 @@ public class RandomNumberService {
 	@HystrixCommand(fallbackMethod = "getRandomNumberFallback",
 					threadPoolKey="randomNumberPool",
 					groupKey="RandomNumberService"
+//					commandProperties = {
+//								@HystrixProperty(name="execution.isolation.strategy", value="SEMAPHORE"),
+//						        @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+//						        @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "20"),
+//						        @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000")
+//						    }
 					)
 	public int checkNumber(int number) {
 		
