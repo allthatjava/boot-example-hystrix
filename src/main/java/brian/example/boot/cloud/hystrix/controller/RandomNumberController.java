@@ -5,8 +5,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
@@ -25,7 +25,7 @@ public class RandomNumberController {
 	 * @param number
 	 * @return
 	 */
-	@RequestMapping(value="/numberChecker/{number}")
+	@GetMapping(value="/numberChecker/{number}")
 	public String getNumberChecker(@PathVariable("number") int number) {
 		return service.checkNumber(number)+"";
 	}
@@ -38,7 +38,7 @@ public class RandomNumberController {
 	 * @param timeDelay
 	 * @return
 	 */
-	@RequestMapping(value="/delayedTimeTest/{timeDelay}")
+	@GetMapping(value="/delayedTimeTest/{timeDelay}")
 	public String getDelayedTimeCheck(@PathVariable("timeDelay") int timeDelay) {
 		
 		return service.getDelayedRandomNumber(timeDelay)+"";

@@ -31,6 +31,8 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.cloud:spring-cloud-starter-hystrix')	// Hystrix library
 	compile('org.springframework.boot:spring-boot-starter-actuator')	// Reqiured : To stream the Hystrix report
+	compile('org.springframework:spring-aop') 	// Spring AOP
+	compile('org.aspectj:aspectjweaver') 	// AspectJ
 	
 	compile('org.springframework.cloud:spring-cloud-starter-hystrix-dashboard')	// Hystrix Dashboard
 	
